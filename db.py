@@ -1,14 +1,21 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
+
+# def get_engine():
+#     return create_engine(
+#         f"postgresql+psycopg2://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@"
+#         f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+#     )
+
 
 def get_engine():
     return create_engine(
-        f"postgresql+psycopg2://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@"
-        f"{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+        f"postgresql+psycopg2://{st.secrets['DB_USER']}:{st.secrets['DB_PASSWORD']}@"
+        f"{st.secrets['DB_HOST']}:{st.secrets['DB_PORT']}/{st.secrets['DB_NAME']}"
     )
 
 
@@ -117,3 +124,4 @@ def get_daily_portfolio_data():
     df["report_date"] = pd.to_datetime(df["report_date"])
     df["roas_daily"] = df["total_sales"] / df["total_spend"]
     return df
+
