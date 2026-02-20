@@ -1,6 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import os
+import streamlit as st
 # from dotenv import load_dotenv
 
 # load_dotenv()
@@ -124,4 +125,5 @@ def get_daily_portfolio_data():
     df["report_date"] = pd.to_datetime(df["report_date"])
     df["roas_daily"] = df["total_sales"] / df["total_spend"]
     return df
+
 
